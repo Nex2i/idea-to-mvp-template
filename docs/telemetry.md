@@ -2,7 +2,7 @@
 
 PostHog is installed in the web workspace but **disabled unless both** `VITE_POSTHOG_PROJECT_TOKEN` and `VITE_POSTHOG_HOST` are set at build time. Use one PostHog project per MVP so its events, retention, access, and budget stay separate. The project token is a browser-visible identifier, not a secret; never put a personal API key in a `VITE_` variable. Use the ingestion host shown in that project's setup page, such as `https://us.i.posthog.com` or `https://eu.i.posthog.com`. [PostHog React/JS setup](https://posthog.com/docs/libraries/react), [privacy guidance](https://posthog.com/docs/privacy)
 
-The module at `apps/web/src/telemetry.ts` loads the SDK only after a visitor chooses **Allow**. It uses memory persistence, leaves automatic click and pageview capture off, disables session replay, surveys, and feature flags, and never identifies a visitor. It excludes current and referring URLs from event properties. A visitor can decline or later disable analytics. The app sends only these named product events (the SDK may also record its internal consent event):
+The module at `apps/web/src/telemetry.ts` loads the SDK only after a visitor chooses **Allow**. It uses memory persistence, disables automatic clicks, pageviews, dead clicks, exceptions, heatmaps, performance capture, session replay, surveys, and remote flags, and never identifies a visitor. It excludes current and referring URLs from event properties and disables IP enrichment. A visitor can decline or later disable analytics. The app sends only these named product events (the SDK may also record its internal consent event):
 
 | Event | When | Properties |
 | --- | --- | --- |
