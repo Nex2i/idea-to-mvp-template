@@ -12,6 +12,17 @@ For each requested run, the agent selects the idea, defines requirements, implem
 6. Deploy using authorized GitHub, Netlify, and Render access, with a unique `<idea-slug>.nex2i.com` domain and isolated secrets. Keep payments in Stripe sandbox/test mode for the founder's first review. Provision within the approved infrastructure and AI budget.
 7. Deliver a concise decision report, repository and deployment links, automated verification results, known gaps, and a manual test checklist with expected outcomes. Include test data prerequisites and cleanup. Record founder review as pending until feedback arrives, then resolve reported defects and update results.
 
+## Ideation TODO: decide how billing works
+
+Complete this before implementation. The agent selects the model autonomously and reports it in the founder handoff; subscriptions are one option, not the default for every idea.
+
+- [ ] Compare subscription, prepaid credits, pay per use, one-time purchase, and a hybrid only when justified. Match the model to purchase frequency, buyer value, accepted output, predictability, and delivery cost. Record the choice and rejected alternatives.
+- [ ] Define the payer and billable unit (account, seat, completed task, report, credit, or consumption). State when it becomes billable and how failed, retried, or duplicate work is handled.
+- [ ] Set a pricing hypothesis, currency, interval, estimated unit cost and margin, and any minimum spend or cap. Record supporting evidence; proposed prices remain unvalidated until tested with buyers.
+- [ ] Define free/trial limits, activation event, upgrade trigger, paid entitlements, and whether payment precedes work or follows measured usage. Make charges and limits visible to users.
+- [ ] Specify rules for the selected model: subscription renewal, included allowances/reset timing, overages and cancellation; credit purchase, reservation/debit, expiry, rollover and insufficient balance; pay-per-use metering, settlement and caps; or one-time fulfillment and repeat purchases. Define failed payment/work, access revocation, refunds, and disputes. Mark unrelated rules not applicable.
+- [ ] Map the selected model to payment objects, authoritative entitlement/usage/credit records where needed, and idempotent payment/fulfillment updates. Record checkout and billing-management UX, configuration, and observable sandbox tests in `requirements/mvp.md` before coding.
+
 ## Access and operating boundaries
 
 Prefer MCP or CLI. If required access or secrets are missing, ask for that access and stop the dependent operation. This is an access blocker, not a request for idea approval. Do not request permission again for actions already authorized in the session.

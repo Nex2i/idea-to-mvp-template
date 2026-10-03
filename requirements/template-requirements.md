@@ -13,6 +13,13 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 - [ ] Every requirement maps to an observable acceptance test. Unproven demand and proposed prices remain marked as hypotheses.
 - [ ] A paid experiment can stop before a product build. Human review and support are included in the operating estimate.
 
+## Billing decision during ideation
+
+- [ ] Complete the billing TODO in `docs/pipeline.md` before implementation. Compare subscription, prepaid credits, pay per use, and one-time purchase; choose autonomously and record the rationale in `requirements/mvp.md`.
+- [ ] Specify payer, billable unit, price hypothesis, purchase interval, unit economics, free limits, activation/upgrade trigger, payment timing, and paid entitlements.
+- [ ] Define applicable renewal, credit, metering, cancellation, failure, and refund rules, including duplicate/retried work. Record payment configuration, authoritative records, and acceptance tests. Do not treat a subscription plugin as support for every billing model.
+- [ ] Include the billing rationale and sandbox payment/entitlement/manual test cases in the founder handoff. Mark unvalidated pricing and untested behavior explicitly.
+
 ## Reusable stack
 
 - [ ] One public Nex2i GitHub **template** repo; each MVP gets its own repo and environment.

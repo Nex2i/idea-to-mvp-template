@@ -1,5 +1,7 @@
 # Implement the selected MVP
 
+Before implementation, complete the ideation billing TODO in `docs/pipeline.md` and the billing section in `requirements/mvp.md`. Select subscription, credits, pay per use, one-time purchase, or a justified hybrid according to buyer value and delivery economics. Record pricing assumptions, billable units, free limits, entitlements, settlement timing, cancellation/refund/failure rules, authoritative records, and acceptance tests. Implement the selected model rather than automatically using subscriptions.
+
 Read `requirements/idea.json`, `requirements/mvp.md`, `requirements/template-requirements.md`, and `AGENTS.md`. Read the opportunity report supplied for this run and `docs/pipeline.md`. Select the opportunity and complete its requirement brief autonomously; do not ask the founder to approve the idea, requirements, routine implementation choices, or configured demo deployment. Record those decisions for the post-deployment handoff. Do not infer that a project should be built from a research score alone; use its explicit decision level and current buyer evidence.
 
 If `idea.json` is still in template status, first turn the selected experiment into a concrete, reviewable requirement brief. Resolve buyer, trigger, accepted output, and measurable acceptance criteria from the research evidence, recording unvalidated choices as assumptions. If the evidence cannot support a concrete experiment, report the specific unresolved gate instead of inventing customer validation.

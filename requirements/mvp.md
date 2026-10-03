@@ -10,6 +10,16 @@ Buyer, user, trigger, accepted output, and the smallest useful job:
 
 Landing page promise, input form, processing state, result/review state, error state:
 
+## Billing model and pricing hypothesis
+
+Complete during ideation using the TODO in `docs/pipeline.md`, before implementation:
+
+- Selected model (subscription, prepaid credits, pay per use, one-time, or justified hybrid), payer, billable unit, purchase frequency, and rejected alternatives:
+- Price hypothesis, currency, interval, estimated unit cost/margin, evidence, and commercial assumptions:
+- Free/trial limits, activation event, upgrade trigger, paid entitlements, and timing of payment versus work:
+- Applicable renewal/allowance reset, credit debit/expiry/rollover, usage metering/caps, cancellation, failed payment/work, and refund rules; mark unrelated rules not applicable:
+- Payment-provider objects and configuration, authoritative usage/credit/entitlement records, idempotency, checkout/account UX, and sandbox test cases with expected outcomes:
+
 ## API contract
 
 Endpoints, request/response examples, validation, rate limits:
