@@ -1,6 +1,6 @@
 # Idea-to-MVP agent contract
 
-Read `requirements/idea.json` and `requirements/mvp.md` before changing the app. If the idea brief still contains placeholders, complete the requirements from a research report or ask for the missing decision before building domain features.
+Read `requirements/idea.json` and `requirements/mvp.md` before changing the app. If the idea brief still contains placeholders, select the opportunity and complete the requirements from the research report before building domain features. Follow `docs/pipeline.md`: idea selection, the requirement brief, implementation, and demo deployment do not require founder approval. Record assumptions and decisions for review after deployment. If evidence does not support a build, choose and document the appropriate validation experiment or unresolved research gate without inventing demand.
 
 Preserve the selected buyer, trigger, input, accepted output, and measurable acceptance criteria. Keep the first version to one narrow end-to-end task. Implement the domain flow in `apps/web` and `apps/api`, replace the demo waitlist, add only the tables needed, and keep `/health` working. Keep credentials in environment variables. Do not add paid services by default.
 

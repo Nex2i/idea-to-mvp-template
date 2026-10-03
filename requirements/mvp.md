@@ -1,6 +1,6 @@
 # MVP requirements
 
-Fill this in after choosing an idea from the research report.
+The agent fills this in after autonomously selecting an idea from the research report. Follow `docs/pipeline.md`; the founder reviews the deployed result rather than approving the idea or requirement brief beforehand.
 
 ## Outcome
 
@@ -29,3 +29,11 @@ Support, onboarding, review, exceptions, and a five-hour weekly workload estimat
 ## Release
 
 Use a unique `<idea-slug>.nex2i.com` Netlify custom domain. Record the final Netlify and Render URLs, `NETLIFY_PROXY_ORIGIN`, exact `CORS_ORIGIN`, and optional `VITE_POSTHOG_PROJECT_TOKEN` and `VITE_POSTHOG_HOST`. After deployment, smoke test the buyer task and, when enabled, confirm a consented event reaches the MVP's PostHog project while a declined visit sends no events:
+
+## Decision record and founder handoff
+
+Selected opportunity and decision level; evidence and alternatives; assumptions and reasons for scope, pricing hypothesis, stack, and hosting choices:
+
+Repository and deployed URL; automatically verified behavior; incomplete implementation or access blockers:
+
+Manual test checklist with prerequisites, steps, expected outcomes, and cleanup. Include the core task, applicable auth/email/billing flows, failure states, and telemetry consent. Mark founder review as pending until actual results are received:

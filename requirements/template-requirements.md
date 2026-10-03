@@ -4,6 +4,9 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 
 ## Decision and scope
 
+- [ ] Each requested run follows `docs/pipeline.md`: autonomously select the idea, define requirements, build, verify, and deploy the demo, then inform the founder. No idea or requirements approval gate.
+- [ ] The handoff names the selection rationale, assumptions, repo/domain, automated evidence, unresolved issues, and manual tests with expected results. Founder manual review is recorded separately from automated verification.
+
 - [ ] An opportunity report records the research date, buyer, task, alternatives, evidence quality, operating fit, and a decision level. The supplied research prompt is the research contract.
 - [ ] `idea.json` names one buyer, one trigger, required inputs, accepted output, purchase reason, geographic assumption, distribution hypothesis, acceptance criteria, kill conditions, and data sensitivity.
 - [ ] The MVP implements one complete buyer task, including empty, loading, error, success, and review states. The landing page describes the actual buyer promise.

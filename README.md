@@ -4,12 +4,14 @@ This repository is a reusable, free-tier **demo** stack for taking a researched 
 
 ## Flow
 
+The default is autonomous execution for each requested run: select, define, build, verify, and deploy, then inform the founder and provide manual tests. Idea selection and requirements do not need founder approval. See [the pipeline contract](docs/pipeline.md).
+
 1. Run the research stage using [the supplied prompt](prompts/commercial-opportunity-research.txt). Save its report and catalog outside this public repository if they contain private research or customer material.
-2. Choose a **paid validation experiment or build decision** from that report. Fill in [requirements/idea.json](requirements/idea.json) with an actual buyer, task, acceptance criteria, and data rules. The example values are placeholders.
-3. Run `npm run validate:requirements` and `npm test`. The cloud CI workflow repeats these checks.
-4. Ask Codex to implement the idea-specific behavior using [the implementation prompt](prompts/implement-mvp.md), [AGENTS.md](AGENTS.md), and the requirements. An AI coding run requires an AI service entitlement or API key; the hosting free tiers do not include unlimited AI research/code generation.
-5. Create a new public repository from this GitHub template for each MVP and clone it as `~/projects/mvp-ideas/<idea-slug>`, beside this template checkout. Connect that repository to Netlify and Render using the checked-in configuration.
-6. Review the deployed demo and acceptance criteria before using it with a customer. The free Render database expires after 30 days and has no backups.
+2. Select the strongest supported opportunity and record the decision level, evidence, alternatives, and assumptions. Do not request idea approval.
+3. Create a new public Nex2i repository from this template and clone it as `~/projects/mvp-ideas/<idea-slug>`. Fill in its [requirements/idea.json](requirements/idea.json) and [requirements/mvp.md](requirements/mvp.md) with the actual buyer, task, acceptance criteria, and data rules. Do not request requirements approval.
+4. Implement the idea-specific behavior in the new checkout using [the implementation prompt](prompts/implement-mvp.md), [AGENTS.md](AGENTS.md), and the requirements. An AI coding run requires an authorized AI service entitlement or API key; hosting free tiers do not include unlimited AI research/code generation.
+5. Run `npm test` and `npm run build`, then connect and deploy the new repo using the checked-in hosting configuration and authorized account access. Record the deployed checks and any incomplete requirements.
+6. Inform the founder of the decisions, deployed URL, repo, check results, and exact manual test steps. Founder review happens after implementation and demo deployment, before customer use. The free Render database is disposable and expires after 30 days without backups.
 
 The default app is a small working example: a public landing page, a React form, an API health endpoint, and a Postgres-backed waitlist endpoint. Replace the waitlist with the selected opportunity's narrow workflow. **Authentication is specified but not implemented yet**, so do not collect real customer accounts with this scaffold.
 
