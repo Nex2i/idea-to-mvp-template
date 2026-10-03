@@ -3,7 +3,7 @@ services:
     name: nex2i-mvp-api
     runtime: node
     plan: free
-    buildCommand: npm ci && npm run build --workspace @nex2i/api
+    buildCommand: npm ci --include=dev && npm run build --workspace @nex2i/api
     startCommand: npm run start --workspace @nex2i/api
     healthCheckPath: /health
     envVars:
