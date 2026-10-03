@@ -1,6 +1,6 @@
 # Nex2i Idea-to-MVP Template
 
-This repository is a reusable, free-tier **demo** stack for taking a researched opportunity toward a working MVP. It combines a research contract, an idea brief, a requirements gate, a React landing page/app on Netlify, a Node API on Render, and Render Postgres. GitHub Actions runs checks in the cloud on each change. See the [template requirements](requirements/template-requirements.md), [hosting comparison](docs/hosting-decision.md), and [authentication design](docs/auth-design.md).
+This repository is a reusable, free-tier **demo** stack for taking a researched opportunity toward a working MVP. It combines a research contract, an idea brief, a requirements gate, a React landing page/app on Netlify, a Node API on Render, and Render Postgres. GitHub Actions runs checks in the cloud on each change. See the [template requirements](requirements/template-requirements.md), [hosting comparison](docs/hosting-decision.md), [authentication design](docs/auth-design.md), and [telemetry setup](docs/telemetry.md).
 
 ## Flow
 
@@ -8,7 +8,7 @@ This repository is a reusable, free-tier **demo** stack for taking a researched 
 2. Choose a **paid validation experiment or build decision** from that report. Fill in [requirements/idea.json](requirements/idea.json) with an actual buyer, task, acceptance criteria, and data rules. The example values are placeholders.
 3. Run `npm run validate:requirements` and `npm test`. The cloud CI workflow repeats these checks.
 4. Ask Codex to implement the idea-specific behavior using [the implementation prompt](prompts/implement-mvp.md), [AGENTS.md](AGENTS.md), and the requirements. An AI coding run requires an AI service entitlement or API key; the hosting free tiers do not include unlimited AI research/code generation.
-5. Create a new public repository from this GitHub template for each MVP. Connect that repository to Netlify and Render using the checked-in configuration.
+5. Create a new public repository from this GitHub template for each MVP and clone it as `~/projects/mvp-ideas/<idea-slug>`, beside this template checkout. Connect that repository to Netlify and Render using the checked-in configuration.
 6. Review the deployed demo and acceptance criteria before using it with a customer. The free Render database expires after 30 days and has no backups.
 
 The default app is a small working example: a public landing page, a React form, an API health endpoint, and a Postgres-backed waitlist endpoint. Replace the waitlist with the selected opportunity's narrow workflow. **Authentication is specified but not implemented yet**, so do not collect real customer accounts with this scaffold.
@@ -29,7 +29,9 @@ The web app runs on port 5173, the API on port 10000. The API creates the demo w
 1. Publish this repository as a **public** template in Nex2i. Netlify's Free plan does not include private organization repositories.
 2. In Render, connect the GitHub repository and create a Blueprint from `render.yaml`. It provisions a Free web service and one Free Postgres database. Set `CORS_ORIGIN` to the final Netlify URL. Render Free allows only one active Free Postgres database per workspace, so a second MVP may need another disposable database arrangement or a paid datastore.
 3. In Netlify, import the same public repository. The root `netlify.toml` builds `apps/web`. Set `NETLIFY_PROXY_ORIGIN` to the Render service HTTPS origin **before** the production build, then redeploy. The build generates a same-origin `/api` proxy rule.
-4. Visit the Netlify page, submit a test email, and check Render logs. Delete test data before inviting real users.
+4. Add a unique `<idea-slug>.nex2i.com` custom domain to the Netlify site. Use its exact HTTPS origin for `CORS_ORIGIN`, and later for auth configuration. Keep each MVP's auth cookies host-only.
+5. Optionally set `VITE_POSTHOG_PROJECT_TOKEN` and `VITE_POSTHOG_HOST` for consent-based PostHog events. These are browser-visible build variables. See [telemetry setup](docs/telemetry.md).
+6. Visit the Nex2i subdomain, submit a test email, and check Render logs. Delete test data before inviting real users.
 
 Each new MVP is a separate repository and deployment. The cloud CI is free within [GitHub Actions allowances](https://docs.github.com/en/billing/concepts/product-billing/github-actions); pushing to `main` can trigger automatic Netlify and Render deploys after the two Git connections exist.
 

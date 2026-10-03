@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { analyticsConsent, captureTelemetry, setAnalyticsConsent, startTelemetry, telemetryAvailable } from './telemetry';
 import './style.css';
+
+void startTelemetry();
 
 function App() {
   const [email, setEmail] = useState('');
   const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const [consent, setConsent] = useState<'granted' | 'denied' | 'unset'>(analyticsConsent);
+
+  function chooseAnalytics(granted: boolean) {
+    if (setAnalyticsConsent(granted)) setConsent(granted ? 'granted' : 'denied');
+  }
 
   async function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -20,9 +28,11 @@ function App() {
       setState('success');
       setMessage('Thanks. You are on the list.');
       setEmail('');
+      void captureTelemetry('waitlist_submit_succeeded');
     } catch (error) {
       setState('error');
       setMessage(error instanceof Error ? error.message : 'Please try again.');
+      void captureTelemetry('waitlist_submit_failed');
     }
   }
 
@@ -42,7 +52,18 @@ function App() {
           <p className="status" role="status">{message}</p>
         </form>
       </section>
-      <footer>Built to test one commercial hypothesis at a time.</footer>
+      <footer>
+        <span>Built to test one commercial hypothesis at a time.</span>
+        {telemetryAvailable && (
+          <div className="analytics-choice">
+            {consent === 'unset' ? (
+              <><span>Allow anonymous usage analytics?</span><button type="button" onClick={() => chooseAnalytics(true)}>Allow</button><button type="button" onClick={() => chooseAnalytics(false)}>Decline</button></>
+            ) : (
+              <button type="button" onClick={() => chooseAnalytics(consent !== 'granted')}>{consent === 'granted' ? 'Disable analytics' : 'Enable analytics'}</button>
+            )}
+          </div>
+        )}
+      </footer>
     </main>
   );
 }

@@ -19,6 +19,8 @@ Create the auth instance once in the API, not separately per feature. Set `email
 
 The browser uses `/api/auth` on its own origin. Netlify's build creates an `/api/*` proxy rule from `NETLIFY_PROXY_ORIGIN`; Coolify routes it to the API container. This avoids third-party cookie loss in Safari. The server validates each protected request using the session API, then applies app-specific authorization. [Cross-domain cookie guidance](https://better-auth.com/docs/concepts/cookies)
 
+The public origin for each MVP is `https://<idea-slug>.nex2i.com`. Set `BETTER_AUTH_URL` and `APP_ORIGIN` to that exact origin and route `/api/auth` to its API. Keep cookies host-only rather than setting `Domain=.nex2i.com`, so accounts and sessions do not leak between MVPs.
+
 For login, allow a username and password. Registration still requires an email because verification and reset depend on it. Treat email as private and username as potentially visible. Rate-limit auth routes, use generic forgot-password responses, and log safe event metadata. These controls come from [OWASP Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) and [Forgot Password](https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html); library support alone does not prove the deployed flow meets them.
 
 If the API changes to C# later, ASP.NET Core Identity is a strong equivalent with email confirmation and reset support. Reuse the **behavior contract** above rather than assuming session tokens or database tables can be shared across frameworks. [Microsoft Identity guidance](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/accconfirm?view=aspnetcore-10.0)

@@ -28,4 +28,4 @@ Support, onboarding, review, exceptions, and a five-hour weekly workload estimat
 
 ## Release
 
-Netlify URL, Render URL, environment variables, and manual smoke test:
+Use a unique `<idea-slug>.nex2i.com` Netlify custom domain. Record the final Netlify and Render URLs, `NETLIFY_PROXY_ORIGIN`, exact `CORS_ORIGIN`, and optional `VITE_POSTHOG_PROJECT_TOKEN` and `VITE_POSTHOG_HOST`. After deployment, smoke test the buyer task and, when enabled, confirm a consented event reaches the MVP's PostHog project while a declined visit sends no events:

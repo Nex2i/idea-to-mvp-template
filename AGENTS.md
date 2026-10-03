@@ -7,3 +7,5 @@ Preserve the selected buyer, trigger, input, accepted output, and measurable acc
 Run the requirements validator and build checks. Update `requirements/mvp.md` with the actual API contract, data model, test cases, deployment variables, and manual review steps. Record unresolved buyer or compliance assumptions; do not invent customer validation.
 
 The research stage uses `prompts/commercial-opportunity-research.txt`. Do not run that long research automatically on every code change. Research and code generation require an authorized AI runtime; GitHub Actions CI only validates deterministic work.
+
+Keep this checkout at `~/projects/mvp-ideas/idea-to-mvp-template`. Create each selected idea as a separate sibling checkout at `~/projects/mvp-ideas/<idea-slug>` from the public GitHub template. Do not implement an idea in this template checkout. Use a unique `<idea-slug>.nex2i.com` Netlify domain for each deployed MVP.

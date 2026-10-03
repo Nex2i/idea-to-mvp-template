@@ -15,6 +15,7 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 - [ ] One public Nex2i GitHub **template** repo; each MVP gets its own repo and environment.
 - [ ] React/TypeScript frontend, API, PostgreSQL, migrations, environment examples, health endpoint, structured logs, and deterministic CI.
 - [ ] The app can run behind one public origin with `/api` routed to its server. Authentication must work in Safari and browsers that block third-party cookies.
+- [ ] Each public MVP uses a unique `<idea-slug>.nex2i.com` hostname added in Netlify. Set the matching auth base URL and allowed origin for that exact hostname; do not share session cookies across MVP subdomains.
 - [ ] Netlify/Render and a single-VM Coolify path use the same app code and environment contract.
 - [ ] No credentials, customer data, or research with confidential material are committed to a public repo.
 - [ ] Free-tier deployment remains explicitly disposable. A durable launch requires persistent storage, off-server backups, restore testing, and monitoring.
@@ -35,6 +36,8 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 - [ ] Keep admin access separate from product user roles; turn on MFA for GitHub, hosting, and email-provider accounts.
 
 ## Email and operations
+
+- [ ] PostHog telemetry is opt-in, scoped to one project per MVP, and limited to named, value-free task events. Verify consent and event delivery on the actual Nex2i subdomain. Keep autocapture and session replay disabled unless separately reviewed.
 
 - [ ] Transactional email provider uses a verified sending domain and SPF/DKIM. Store its API key as a hosting secret.
 - [ ] Email send failures have a visible retry path and an operational alert. Do not claim a reset worked merely because an API request succeeded.
