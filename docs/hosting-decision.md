@@ -1,5 +1,7 @@
 # Hosting decision research
 
+Current founder decision: always use Nex2i GitHub + the existing Netlify account + Ryan's Render workspace + a unique `<idea-slug>.nex2i.com` domain. Customer-ready durability is mandatory; missing budget is a release blocker. The alternatives below are historical research, not permission to select another deployment path. See [the execution runbook](mvp-runbook.md).
+
 Research date: 2026-10-03. Prices and quotas are current source claims, not account-specific guarantees. Check the actual account plan before provisioning.
 
 | Path | Cash cost at small scale | What works | Material limitation |
@@ -11,7 +13,7 @@ Research date: 2026-10-03. Prices and quotas are current source claims, not acco
 
 Coolify documents a **2 vCPU, 2 GB RAM, 10 GB disk minimum for Coolify itself**. A VM at that minimum leaves little room for Postgres and multiple apps; size for the combined workloads. Hetzner's June 2026 published CX23 price table lists about €5.49/month EU or $6.49/month US, but its product page currently flags CX23 as unavailable, so do not budget on actually obtaining that exact SKU. A VM quote must be checked in the chosen region. [Coolify minimum](https://coolify.io/docs/start-with-self-hosted), [Hetzner price adjustment](https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/), [Hetzner availability](https://www.hetzner.com/cloud/cost-optimized/)
 
-**Recommendation:** keep Netlify + Render Free for a disposable, unauthenticated demo. For a reusable account-based MVP with persistent users, choose a durable path before inviting users. A small Coolify VM is economically attractive if several MVPs will share it and you accept routine server operations. For one MVP under a five-hour weekly operating limit, the roughly $13/month managed Render path may be the better value because it removes a meaningful part of the infrastructure workload. The choice changes if VM availability/price, expected app count, or support burden changes. [Render Free limits](https://render.com/docs/free), [Render small-business cost example](https://render.com/articles/how-much-does-cloud-application-hosting-cost-for-small-businesses), [Coolify responsibilities](https://coolify.io/docs/core/selfhosted-cloud-comparison)
+**Selected deployment:** Netlify + Render in the established founder accounts. Free, expiring resources may support development but do not satisfy customer persistence and backup gates. Establish approved durable capacity before customer release. Coolify/other providers are not the selected path unless the founder explicitly changes that decision.
 
 ## Cost and operational assumptions
 

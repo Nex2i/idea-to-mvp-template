@@ -1,15 +1,15 @@
 # Autonomous idea-to-MVP pipeline
 
-For each requested run, the agent selects the idea, defines requirements, implements and verifies the MVP, deploys a demo, then informs the founder. The founder manually tests the delivered result. Idea selection and the requirement brief are decisions delegated to the agent, not approval gates.
+For each requested run, the agent selects the idea, defines requirements, implements and verifies the MVP, deploys a customer-ready MVP, then informs the founder. Read [the execution runbook](mvp-runbook.md) for the standing founder defaults and release gates. The founder manually tests the delivered result. Idea selection and the requirement brief are decisions delegated to the agent, not approval gates.
 
 ## Execution
 
 1. Research using `prompts/commercial-opportunity-research.txt` and the current founder context. Preserve dated sources, competing alternatives, skeptical review, and evidence quality. Run this stage for an opportunity search, not every code change.
-2. Select the strongest supported opportunity and record why it won, the decision level, assumptions, and kill conditions. A validation experiment can be the appropriate MVP. If no concrete experiment is supported, report the unresolved evidence gate or rejected set; do not manufacture demand to force a build.
+2. Select the strongest supported opportunity and record why it won, the decision level, assumptions, and kill conditions. A paid-validation experiment may be the commercial decision; the implementation still must be customer-ready. Research SEO buyer intent and competing organic results as major distribution evidence; no ads. If no concrete experiment is supported, report the unresolved evidence gate or rejected set; do not manufacture demand to force a build.
 3. Create a separate public Nex2i repo and sibling checkout at `~/projects/mvp-ideas/<idea-slug>`. Complete `requirements/idea.json` and `requirements/mvp.md` in that checkout. Keep research containing private material outside public repositories. Keep one buyer task with measurable acceptance criteria.
-4. Implement the task in `apps/web` and `apps/api`. Reuse the template's auth, email, billing, and telemetry when implemented and configured. Choose product scope, pricing hypotheses, free limits, and acceptance criteria without requesting founder permission; state the evidence and assumptions. A configured provider is not proof its app integration is implemented.
-5. Run requirements validation, relevant tests, and builds. Check the deployed core task and applicable auth, email, billing, and telemetry behavior through MCP or CLI. Record what was actually exercised; never label untested browser behavior as passed.
-6. Deploy using authorized GitHub, Netlify, and Render access, with a unique `<idea-slug>.nex2i.com` domain and isolated secrets. Keep payments in Stripe sandbox/test mode for the founder's first review. Provision within the approved infrastructure and AI budget.
+4. Implement the task in `apps/web` and `apps/api`, including the template customer-account and durable-release requirements and the initial SEO brief. Reuse the template's auth, email, billing, and telemetry when implemented and configured. Choose product scope, pricing hypotheses, free limits, and acceptance criteria without requesting founder permission; state the evidence and assumptions. A configured provider is not proof its app integration is implemented.
+5. Run requirements validation, relevant tests, and builds. Check the deployed core task, SEO, required auth/email, selected billing, and configured telemetry behavior through MCP or CLI. Record what was actually exercised; never label untested browser behavior as passed.
+6. Deploy only after successful CI for the exact revision, using Nex2i GitHub, the existing Netlify account and Ryan's Render workspace, with a unique `<idea-slug>.nex2i.com` domain and isolated secrets. Keep payments in Stripe sandbox/test mode for the founder's first review. Provision within the approved infrastructure and AI budget.
 7. Deliver a concise decision report, repository and deployment links, automated verification results, known gaps, and a manual test checklist with expected outcomes. Include test data prerequisites and cleanup. Record founder review as pending until feedback arrives, then resolve reported defects and update results.
 
 ## Ideation TODO: decide how billing works
@@ -27,7 +27,7 @@ Complete this before implementation. The agent selects the model autonomously an
 
 Prefer MCP or CLI. If required access or secrets are missing, ask for that access and stop the dependent operation. This is an access blocker, not a request for idea approval. Do not request permission again for actions already authorized in the session.
 
-The current budget is the existing free-compatible disposable demo arrangement. New paid infrastructure or AI spending requires an approved budget. This workflow does not authorize customer outreach, live charges, or collection of sensitive customer data. Durable customer use requires the persistence and release requirements in `requirements/template-requirements.md`.
+Existing approved service capacity is available; customer-ready durability must be established, not inferred from a free-tier demo. Expiring databases without backups are not a release option. New paid infrastructure or AI spending requires an approved budget. This workflow does not authorize customer outreach, live charges, or collection of sensitive customer data. Every completed MVP requires the persistence and customer-release requirements in `requirements/template-requirements.md`.
 
 This file defines how an authorized run behaves. It does not start recurring runs or install an unattended cloud AI runtime. GitHub Actions currently performs deterministic checks; research and coding need an authorized AI runtime.
 
@@ -37,6 +37,6 @@ For each generated MVP include:
 
 - Selected buyer, trigger, inputs, accepted output, selection evidence, rejected alternatives, and commercial assumptions.
 - Implemented scope, pricing hypothesis, plan limits, architecture choices, operating costs, and unresolved requirements.
-- Repo, app URL, and actual automated test/deployment results.
-- Numbered manual steps with expected outcomes for the buyer task, applicable signup/verification/login/reset/logout, sandbox upgrade/billing/cancellation, failure states, and analytics consent.
+- Repo, app URL, SEO/Search Console status, and one linked verification ledger with actual automated test/deployment results.
+- Numbered manual steps with expected outcomes for the buyer task, required signup/verification/login/reset/logout, sandbox upgrade/billing/cancellation, failure states, and analytics consent.
 - Any unexercised flow clearly marked pending manual verification; founder feedback and results recorded after review.

@@ -46,4 +46,24 @@ Selected opportunity and decision level; evidence and alternatives; assumptions 
 
 Repository and deployed URL; automatically verified behavior; incomplete implementation or access blockers:
 
-Manual test checklist with prerequisites, steps, expected outcomes, and cleanup. Include the core task, applicable auth/email/billing flows, failure states, and telemetry consent. Mark founder review as pending until actual results are received:
+Manual test checklist with prerequisites, steps, expected outcomes, and cleanup. Include the core task, required auth/email and selected billing flows, failure states, and telemetry consent. Mark founder review as pending until actual results are received:
+
+## Mandatory founder defaults and customer readiness
+
+Customer-ready MVP only. Required auth/email/session/recovery, isolated durable data, backups/restore, monitoring, support and safe failure behavior; exact deployed verification and unresolved launch blockers:
+
+Fixed Nex2i GitHub → Netlify frontend → Ryan's Render workspace API/storage, unique `<idea-slug>.nex2i.com`, exact same-origin settings; early access/secret/ownership check and actual CI-before-deploy mechanism:
+
+## Organic SEO plan and verification
+
+No ads. Buyer search intent, researched organic competitors, proposed content/tool advantage and remaining search-demand uncertainty:
+
+Primary page/resources, titles/descriptions/canonical URLs, crawlable content, original supporting guidance and internal links:
+
+Deployed robots/sitemap/404/redirect/index-control checks, no-JavaScript content, hydration/task/browser results, mobile and measured performance:
+
+Search Console property/ownership, sitemap submission, live inspection, Google's indexing/canonical status and outstanding access/processing steps:
+
+## Verification ledger and cleanup
+
+Link one ledger recording each check's actual evidence, result, commit and deployment. Tie billing test browser/account/session/payment/refund together; record sandbox ownership/expiry and cleanup. Do not duplicate conflicting passed/pending summaries.

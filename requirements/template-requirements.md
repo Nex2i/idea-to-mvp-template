@@ -4,7 +4,7 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 
 ## Decision and scope
 
-- [ ] Each requested run follows `docs/pipeline.md`: autonomously select the idea, define requirements, build, verify, and deploy the demo, then inform the founder. No idea or requirements approval gate.
+- [ ] Each requested run follows `docs/pipeline.md`: autonomously select the idea, define requirements, build, verify, and deploy a customer-ready MVP, then inform the founder. No idea or requirements approval gate.
 - [ ] The handoff names the selection rationale, assumptions, repo/domain, automated evidence, unresolved issues, and manual tests with expected results. Founder manual review is recorded separately from automated verification.
 
 - [ ] An opportunity report records the research date, buyer, task, alternatives, evidence quality, operating fit, and a decision level. The supplied research prompt is the research contract.
@@ -26,10 +26,10 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 - [ ] React/TypeScript frontend, API, PostgreSQL, migrations, environment examples, health endpoint, structured logs, and deterministic CI.
 - [ ] The app can run behind one public origin with `/api` routed to its server. Authentication must work in Safari and browsers that block third-party cookies.
 - [ ] Each public MVP uses a unique `<idea-slug>.nex2i.com` hostname added in Netlify. Set the matching auth base URL and allowed origin for that exact hostname; do not share session cookies across MVP subdomains.
-- [ ] Netlify/Render and a single-VM Coolify path use the same app code and environment contract.
+- [ ] Always deploy through Nex2i GitHub, the existing Netlify account and Ryan's Render workspace. Alternative hosting requires an explicit founder change. See `docs/mvp-runbook.md`.
 - [ ] No credentials, customer data, or research with confidential material are committed to a public repo.
-- [ ] Free-tier deployment remains explicitly disposable. A durable launch requires persistent storage, off-server backups, restore testing, and monitoring.
-- [ ] Deploys follow passing CI; a failed build leaves the previous version available. Smoke test the actual landing page, login, API, email flow, and core buyer task.
+- [ ] Every completed MVP has durable storage, off-server backups, actual restore verification, monitoring and a support path. Expiring unbacked free databases are development scaffolding, not a customer-ready release.
+- [ ] Enforce deployment after passing CI for the exact revision through provider gating or explicit post-CI deployment; independent push auto-deploy is insufficient; a failed build leaves the previous version available. Smoke test the actual landing page, login, API, email flow, and core buyer task.
 
 ## Authentication, shared by every MVP
 
@@ -58,3 +58,13 @@ Status: architecture requirements, 2026-10-03. This checklist is the gate for ca
 ## Gate
 
 The template may be published as a public scaffold while these boxes are open. Do not describe a generated app as ready for real customer accounts until authentication, email, persistence, backup, and smoke tests are checked in the deployed environment.
+
+## Organic SEO, required for every idea
+
+- [ ] Acquisition is SEO-led organic discovery; no ads, invented search volumes, rankings or CAC. Selection compares real buyer search intent and competing organic answers/tools. Founder content and maintenance time is included in workload estimates.
+- [ ] Initial SEO brief identifies primary intent, public product page, useful original supporting resource(s), canonical URLs, internal links and activation.
+- [ ] Public content is crawlable in initial HTML, with unique titles/descriptions, clear H1, canonical HTTPS URLs, appropriate social metadata and truthful structured data where relevant. Browser hydration and the buyer task pass after prerendering.
+- [ ] Deployed robots/sitemap/content types, canonical-host redirects, actual404s and API/private-page index controls pass. Verify headers on proxied responses at the origin. No generic all-path200 SPA fallback.
+- [ ] Mobile usability and measured lab performance checked; field Core Web Vitals reported separately when data exists.
+- [ ] Search Console ownership/access, sitemap submission, live inspection and eventual selected canonical/indexing status are recorded. Missing access or processing time remains explicitly pending; technical readiness is not proof of traffic or rankings.
+- [ ] One verification ledger records customer, SEO, browser and billing checks against exact commits/deployments. Secrets are never printed; billing sessions/payments/refunds are linked and test artifacts cleaned up.
