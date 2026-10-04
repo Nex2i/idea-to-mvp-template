@@ -71,3 +71,9 @@ Link one ledger recording each check's actual evidence, result, commit and deplo
 ## Run identity and cross-run novelty
 
 Run ID, random seed, sampled discovery scopes, shared registry path, compared implemented/reserved entry IDs, semantic novelty rationale, duplicate decisions and restarts, reservation ID and final registry release status:
+
+## Required Nex2i portfolio publication
+
+Existing nex2i-landing project checkout/repo/site, production portfolio URL/parent origins, entry key/data location, public iframe preview route and framing policy:
+
+Modal/direct app behavior, deployed mobile/keyboard/render/fallback checks, portfolio source revision/deployment, shared registry publication metadata and any unfinished access/publishing steps:

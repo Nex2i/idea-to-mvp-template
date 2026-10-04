@@ -1,6 +1,6 @@
 # Autonomous idea-to-MVP pipeline
 
-For each requested run, the agent selects the idea, defines requirements, implements and verifies the MVP, deploys a customer-ready MVP, then informs the founder. Read [the execution runbook](mvp-runbook.md) for the standing founder defaults and release gates. The founder manually tests the delivered result. Idea selection and the requirement brief are decisions delegated to the agent, not approval gates.
+For each requested run, the agent selects the idea, defines requirements, implements and verifies the MVP, deploys a customer-ready MVP, adds its iframe preview/modal to the Nex2i portfolio, then informs the founder. Read [the execution runbook](mvp-runbook.md) for the standing founder defaults and release gates. The founder manually tests the delivered result. Idea selection and the requirement brief are decisions delegated to the agent, not approval gates.
 
 ## Execution
 
@@ -10,7 +10,9 @@ For each requested run, the agent selects the idea, defines requirements, implem
 4. Implement the task in `apps/web` and `apps/api`, including the template customer-account and durable-release requirements and the initial SEO brief. Reuse the template's auth, email, billing, and telemetry when implemented and configured. Choose product scope, pricing hypotheses, free limits, and acceptance criteria without requesting founder permission; state the evidence and assumptions. A configured provider is not proof its app integration is implemented.
 5. Run requirements validation, relevant tests, and builds. Check the deployed core task, SEO, required auth/email, selected billing, and configured telemetry behavior through MCP or CLI. Record what was actually exercised; never label untested browser behavior as passed.
 6. Deploy only after successful CI for the exact revision, using Nex2i GitHub, the existing Netlify account and Ryan's Render workspace, with a unique `<idea-slug>.nex2i.com` domain and isolated secrets. Keep payments in Stripe sandbox/test mode for the founder's first review. Provision within the approved infrastructure and AI budget.
-7. Register the implemented MVP and its honest release status in the shared list. Deliver a concise decision report, repository and deployment links, automated verification results, known gaps, and a manual test checklist with expected outcomes. Include test data prerequisites and cleanup. Record founder review as pending until feedback arrives, then resolve reported defects and update results.
+7. Register the implemented MVP and its honest release status in the shared list.
+8. Add/upsert it in the existing `nex2i-landing` portfolio following [portfolio publishing](portfolio-publishing.md): working iframe preview, accessible modal with larger iframe and direct app link, compatible restricted framing headers, published browser verification, and registry publication metadata. This is required for pipeline completion.
+9. Deliver a concise decision report, repository and deployment links, automated verification results, known gaps, and a manual test checklist with expected outcomes. Include test data prerequisites and cleanup. Record founder review as pending until feedback arrives, then resolve reported defects and update results.
 
 ## Ideation TODO: decide how billing works
 
@@ -37,6 +39,6 @@ For each generated MVP include:
 
 - Selected buyer, trigger, inputs, accepted output, selection evidence, rejected alternatives, and commercial assumptions.
 - Implemented scope, pricing hypothesis, plan limits, architecture choices, operating costs, and unresolved requirements.
-- Repo, app URL, SEO/Search Console status, and one linked verification ledger with actual automated test/deployment results.
+- Repo, app URL, published portfolio entry/preview/modal evidence, SEO/Search Console status, and one linked verification ledger with actual automated test/deployment results.
 - Numbered manual steps with expected outcomes for the buyer task, required signup/verification/login/reset/logout, sandbox upgrade/billing/cancellation, failure states, and analytics consent.
 - Any unexercised flow clearly marked pending manual verification; founder feedback and results recorded after review.

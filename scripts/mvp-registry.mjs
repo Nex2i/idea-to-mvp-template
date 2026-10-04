@@ -55,9 +55,14 @@ try{
   const status=required('release-status');if(!['customer-ready','release-blocked','validation-demo'].includes(status))throw new Error('Invalid release status');
   entry.status='implemented';entry.release_status=status;entry.repository=required('repository');entry.app_url=required('app-url');entry.implemented_at=options['implemented-at']||entry.implemented_at||new Date().toISOString();entry.updated_at=new Date().toISOString();data.runs.find(r=>r.id===entry.run_id).status='implemented';return{outcome:'implemented',entry};
  });
+ else if(command==='portfolio')result=await transaction(data=>{
+  const entry=data.entries.find(e=>e.id===required('id'));if(!entry||entry.run_id!==required('run-id'))throw new Error('Reservation owner does not match');if(entry.status!=='implemented')throw new Error('Implement the MVP before recording portfolio publication');
+  const url=new URL(required('url'));if(url.protocol!=='https:'||url.username||url.password)throw new Error('Portfolio URL must be HTTPS without credentials');
+  entry.portfolio={project:'nex2i-landing',entry_key:entry.id,url:url.href,source_revision:required('source-revision'),deployment_id:required('deployment-id'),verification_reference:required('verification-reference'),published_at:new Date().toISOString()};return{outcome:'portfolio_recorded',entry};
+ });
  else if(command==='release')result=await transaction(data=>{
   const entry=data.entries.find(e=>e.id===required('id'));if(!entry||entry.run_id!==required('run-id'))throw new Error('Reservation owner does not match');if(entry.status!=='reserved')throw new Error('Implemented entries cannot be released or forgotten');entry.status='abandoned';entry.release_status='not-built';entry.abandon_reason=required('reason');data.runs.find(r=>r.id===entry.run_id).status='abandoned';return{outcome:'released',entry};
  });
- else throw new Error('Commands: list, start, reserve, reject, mark, release. Common: --registry path. Candidate JSON and semantic review are required for reserve.');
+ else throw new Error('Commands: list, start, reserve, reject, mark, portfolio, release. Common: --registry path. Candidate JSON and semantic review are required for reserve.');
  console.log(JSON.stringify(result,null,2));if(result.outcome==='duplicate')process.exitCode=2;
 }catch(e){console.error(e.message);process.exitCode=1;}

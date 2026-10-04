@@ -19,3 +19,7 @@ Read `docs/mvp-runbook.md` before planning implementation. Every requested full 
 ## Novelty across repeated runs
 
 Before research read `docs/novelty-registry.md`, start a uniquely seeded run and consult the shared `~/projects/mvp-ideas/mvp-registry.json`. Novelty means a distinct buyer task, not a new name. Restart discovery if the selected decision duplicates an implemented MVP or active reservation. Reserve it atomically before provisioning, then record implementation and actual release status. Do not bypass a missing/locked registry or reset it per run. Five daily runs is supported as an invocation pattern, not a request to create a schedule or lower research/customer-ready standards.
+
+## Portfolio after implementation
+
+Read `docs/portfolio-publishing.md`. Each implemented MVP must be upserted into the existing `nex2i-landing` portfolio with an iframe preview and accessible modal opening a larger deployed public preview, plus a direct app link. Resolve the real target and parent origin rather than creating a replacement. Verify restrictive framing headers, actual iframe render and modal/mobile/keyboard behavior; publish using the portfolio's current workflow and record registry metadata. Missing portfolio access or blocked framing is unfinished pipeline work.

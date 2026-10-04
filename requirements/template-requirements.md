@@ -68,3 +68,11 @@ The template may be published as a public scaffold while these boxes are open. D
 - [ ] Mobile usability and measured lab performance checked; field Core Web Vitals reported separately when data exists.
 - [ ] Search Console ownership/access, sitemap submission, live inspection and eventual selected canonical/indexing status are recorded. Missing access or processing time remains explicitly pending; technical readiness is not proof of traffic or rankings.
 - [ ] One verification ledger records customer, SEO, browser and billing checks against exact commits/deployments. Secrets are never printed; billing sessions/payments/refunds are linked and test artifacts cleaned up.
+
+## Required Nex2i portfolio integration
+
+- [ ] Existing `nex2i-landing` project located, its instructions/schema/hosting respected, and verified production parent origins recorded.
+- [ ] One idempotent portfolio entry per MVP registry ID/slug, truthful name/task/release status and correct app link; concurrent updates preserve other entries.
+- [ ] Working lazy iframe preview and accessible modal with larger public iframe, close/Escape/focus restoration/mobile behavior and Open app link. No private/customer/payment content embedded.
+- [ ] Actual parent/child CSP framing policies permit only verified portfolio origins; incompatible X-Frame-Options removed only on intended public preview responses. Private routes remain protected.
+- [ ] Published portfolio checked in a browser, including iframe rendering, modal and fallback, other entries and console errors; deployment/revision and verification recorded in ledger/registry. Pipeline is incomplete if this required step is blocked.

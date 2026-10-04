@@ -62,3 +62,7 @@ Deliver the decision report, verified repo/app URLs, customer-release and SEO st
 ## Repeated runs and novelty
 
 Read the novelty registry reference before research (`references/novelty-registry.md` in the skill, `docs/novelty-registry.md` in the template). Start a uniquely seeded run, exclude semantic overlaps with implemented MVPs and active reservations, restart discovery when the selected idea duplicates one, and atomically reserve the winner before creating repositories/domains/resources. Mark implemented products with honest release status and handoff IDs. Every invocation shares the founder registry; do not create a separate blank list for each run.
+
+## Required portfolio publication
+
+After implementation, add/upsert the MVP in the existing `nex2i-landing` project's portfolio with an iframe card preview, a modal containing the deployed public MVP preview and a direct Open app link. Read the portfolio publishing reference (`references/portfolio-publishing.md` in the skill, `docs/portfolio-publishing.md` in the template). Verify actual parent/child frame policy and deployed mobile/keyboard/modal behavior, publish via the existing portfolio project's workflow, and record the portfolio revision/deployment/verification on the shared registry entry. Missing access or failed framing leaves this required step unfinished.
