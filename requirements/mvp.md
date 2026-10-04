@@ -67,3 +67,7 @@ Search Console property/ownership, sitemap submission, live inspection, Google's
 ## Verification ledger and cleanup
 
 Link one ledger recording each check's actual evidence, result, commit and deployment. Tie billing test browser/account/session/payment/refund together; record sandbox ownership/expiry and cleanup. Do not duplicate conflicting passed/pending summaries.
+
+## Run identity and cross-run novelty
+
+Run ID, random seed, sampled discovery scopes, shared registry path, compared implemented/reserved entry IDs, semantic novelty rationale, duplicate decisions and restarts, reservation ID and final registry release status:
